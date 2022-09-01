@@ -45,10 +45,12 @@ const displayCocktail = (datas) =>{
             `
         }
         cardContainer.appendChild(card);
+        sprint(false);
     })  
 }
 
 document.getElementById('serach-filed').addEventListener('keyup', function (event){
+    sprint(true);
     const serachField = document.getElementById('serach-filed');
     const value = serachField.value
     const commonvalue = value.toLowerCase();
@@ -60,4 +62,14 @@ document.getElementById('serach-filed').addEventListener('keyup', function (even
     }
 });
 
+
+const sprint = isSpin =>{
+    const spinner = document.getElementById('spinner');
+    if(isSpin === true){    
+        spinner.style.display = 'block';
+    }
+    else{
+        spinner.style.display = 'none';
+    }
+}
 loadCocktail('margarita');
