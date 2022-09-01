@@ -23,7 +23,7 @@ const displayCocktail = (datas) =>{
                     </h2>
                     <p class="text-white text-justify">${data.strInstructions.slice(0,50)}</p>
                     <div class="card-actions justify-start">
-                        <button class="btn bg-white text-orange-500 border-0">View Details</button> 
+                        <label onclick="loadDetail(${data.idDrink})" for="my-modal" class="btn bg-white text-orange-500 border-0 modal-button">View Details</label> 
                     </div>
                 </div>
             `
@@ -39,7 +39,7 @@ const displayCocktail = (datas) =>{
                     </h2>
                     <p class="text-white text-justify">${data.strInstructions.slice(0,50)}</p>
                     <div class="card-actions justify-start">
-                        <button class="btn bg-white text-orange-500 border-0">View Details</button> 
+                        <button onclick="loadDetail(${data.idDrink})" for="my-modal" class="btn bg-white text-orange-500 border-0 modal-button">View Details</button> 
                     </div>
                 </div>
             `
@@ -71,5 +71,32 @@ const sprint = isSpin =>{
     else{
         spinner.style.display = 'none';
     }
+};
+
+const loadDetail = drinkId =>{
+    const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`;
+    fetch(url)
+    .then(res => res.json())
+    .then(data => displayDetail(data.drinks[0]));
 }
+
+const displayDetail = data =>{
+    const modalContainer = document.getElementById('modal-container');
+    modalContainer.innerHTML = ` `;
+    const moderCard = document.createElement('div');
+    moderCard.classList.add('card', 'w-96', 'bg-base-100', 'shadow-xl', 'image-full');
+    moderCard.innerHTML = `
+        <figure><img src="${data.strDrinkThumb}" alt="" /></figure>
+        <div class="card-body">
+        <h2 class="card-title">${data.strDrink}</h2>
+        <p>${data.strCategory}</p>
+        <p>${data.strInstructions}</p>
+        <div class="modal-action">
+            <label for="my-modal" class="btn bg-orange-500 text-white">Close</label>
+        </div>
+        </div>
+    `
+    modalContainer.appendChild(moderCard);
+}
+
 loadCocktail('margarita');
