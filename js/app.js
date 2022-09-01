@@ -71,9 +71,12 @@ const displayCocktail = (datas , dataLimit) =>{
     
 }
 
-document.getElementById('serach-filed').addEventListener('keypress', function (event){
+document.getElementById('serach-filed').addEventListener('keyup', function (event){
     if(event.key === "Enter"){
         productSearchsd(12);
+    }
+    else{
+        productSearchsd(12)
     }
 });
 
