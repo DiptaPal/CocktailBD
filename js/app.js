@@ -6,26 +6,24 @@ const loadCocktail = (key) =>{
     .catch(error => console.log(error))
 }
 const displayCocktail = (datas) =>{
-    const cardContainer = document.getElementById('card');
-    console.log(datas);
+    const cardContainer = document.getElementById('card-container');
     cardContainer.innerHTML = '';
     datas.forEach(data => {
         const card = document.createElement('div');
         card.classList.add('card', 'bg-orange-500', 'shadow-xl');
-        console.log(data);
         if(data.strDrink.includes("Margarita","margarita") ){
             card.innerHTML = `
                 <figure>
-                    <img src=${data.strDrinkThumb} alt="Shoes" class="w-full"/>
+                    <img src=${data.strDrinkThumb} alt="" class="w-full"/>
                 </figure>
                 <div class="card-body">
                     <h2 class="card-title normal-case text-white">
-                    ${data.strDrink}
-                    <div class="badge text-orange-500 bg-white border-0">NEW</div>
+                        ${data.strDrink}
+                        <div class="badge bg-white text-orange-500 border-0">NEW</div>
                     </h2>
-                    <p class="text-white text-justify">${data.strInstructions.slice(0,100)}</p>
+                    <p class="text-white text-justify">${data.strInstructions.slice(0,50)}</p>
                     <div class="card-actions justify-start">
-                    <button class="btn bg-white text-orange-500 border-0">View Details</button> 
+                        <button class="btn bg-white text-orange-500 border-0">View Details</button> 
                     </div>
                 </div>
             `
@@ -37,11 +35,11 @@ const displayCocktail = (datas) =>{
                 </figure>
                 <div class="card-body">
                     <h2 class="card-title normal-case text-white">
-                    ${data.strDrink}
+                        ${data.strDrink}
                     </h2>
-                    <p class="text-white text-justify">${data.strInstructions.slice(0,20)}</p>
+                    <p class="text-white text-justify">${data.strInstructions.slice(0,50)}</p>
                     <div class="card-actions justify-start">
-                    <button class="btn bg-white text-orange-500 border-0">View Details</button> 
+                        <button class="btn bg-white text-orange-500 border-0">View Details</button> 
                     </div>
                 </div>
             `
@@ -61,4 +59,5 @@ document.getElementById('serach-filed').addEventListener('keyup', function (even
         loadCocktail(commonvalue);
     }
 });
+
 loadCocktail('margarita');
