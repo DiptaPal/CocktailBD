@@ -88,9 +88,9 @@ const displayDetail = data =>{
     moderCard.innerHTML = `
         <figure><img src="${data.strDrinkThumb}" alt="" /></figure>
         <div class="card-body">
-        <h2 class="card-title">${data.strDrink}</h2>
-        <p>${data.strCategory}</p>
-        <p>${data.strInstructions}</p>
+        <h2 class="card-title text-white">${data.strDrink}</h2>
+        <p class="text-white">${data.strCategory}</p>
+        <p class="text-white">${data.strInstructions}</p>
         <div class="modal-action">
             <label for="my-modal" class="btn bg-orange-500 text-white">Close</label>
         </div>
